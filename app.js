@@ -1,3 +1,9 @@
+
+
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
 const express=require('express');
 const app=express();
 const path=require('path');
@@ -12,9 +18,15 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const MongoStore=require('connect-mongo')
 const User=require("./model/user")
-mongoose.connect('mongodb://localhost:27017/Event-Planner')
+
+const dbUrl = process.env.DB_URL ||'mongodb://localhost:27017/Event-Planner'
+
+
+
+mongoose.connect(dbUrl)
 .then(()=> console.log("DB Connected"))
 .catch((error)=>console.log(error));
+
 
 
 
@@ -91,10 +103,10 @@ app.use(authRoutes);
 
 
 
-
+ const port = process.env.PORT || 4000;
 
 
 
 app.listen('3000',()=>{
-    console.log('server started at port 3000')
+    console.log(`server started at port ${port}`)
 })
