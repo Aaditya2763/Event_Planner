@@ -1,0 +1,43 @@
+<% layout('layout/boilerplate') -%>
+
+<section class="container shadow" style="margin-top: 80px">
+  <%- include("../partials/flash") %>
+  <h4 class="display-4 bg-dark text-light p-3 rounded">
+    <i class="fa-solid fa-calendar-days" style="color: white"> </i> Event
+    Planner
+  </h4>
+  <div class=" row d-flex justify-content-between">
+    <% for(let event of events){ %>
+    <div class="col-lg-6  col-md-12  col-sm-12">
+      <div
+        class="card mx-3 col-6 shadow"
+        style="width: 500px; margin: 1rem 0rem"
+      >
+        <h5 class="card-header bg-info mx-1">
+          <i class="fa-regular fa-clipboard"> </i> <%=event.eventTitle%>
+        </h5>
+        <div class="card-body">
+          <h5 class="card-title text-success"><%=event.eventDescription%></h5>
+          <p class="card-text">
+            <i class="fa-solid fa-calendar-day"> </i> <%=event.eventDate%>
+          </p>
+          <p class="card-text text-dark">
+            <i class="fa-solid fa-clock"></i> Event start at
+            :<%=event.eventStartTime%>
+          </p>
+          <p class="card-text">
+            <i class="fa-solid fa-stopwatch" style="font-size: 1.2rem"> </i>
+            Event end at :<%=event.eventEndTime%>
+          </p>
+          <div class="d-flex justify-content-between">
+            <p><i class="fa-regular fa-user"></i> Posted By: Aaditya</p>
+            <a href="/event/<%=event._id%>" class="btn btn-outline-success"
+              >View Event
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</section>

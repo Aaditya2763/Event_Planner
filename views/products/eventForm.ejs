@@ -1,0 +1,114 @@
+<% layout('layout/boilerplate') -%>
+
+
+<section class="  container" >
+  <%- include("../partials/flash")  %> 
+<div class="border p-3 mx-auto w-50 shadow mx-auto" style="margin-top: 5rem;" >
+    <h1 class="text-success text-center ">Event Details</h1>
+    <div class="border shadow p-2">
+    <p class="text-danger">Note: Fields with * are necessary to fill.</p>
+    <form action="/events/" method="post" class="form-validate" novalidate>
+        <div class="mb-3">
+            <label for="eventTitle" class="form-label text-danger">Event Tiitle*</label>
+            <input type="text" class="form-control" name="eventTitle" id="eventTitle" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>    
+    
+        <div class="row g-2">
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="Date" class="form-control" id="eventDate" required >
+              <label for="eventDate" class="text-danger ">Select Event Date*</label>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="form-floating">
+              <select class="form-select" id="eventType" aria-label="Floating label select example" required>
+                <option value="">Select Event Type</option>
+                <option value="1">Personal</option>
+                <option value="2">Official</option>
+                <option value="3">Social</option>
+              </select>
+              <label for="eventType" class="text-danger" >Event Type*</label>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+          </div>
+        </div>
+
+             <br>
+        <div class="row g-2">
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="time" class="form-control" id="eventStartTime" required >
+              <label for="eventStartTime" class="text-danger">Event Start Time*</label>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="form-floating">
+              <input type="time" class="form-control" id="eventEndTime" required >
+              <label for="eventEndTime" class="text-danger">Event End Time *</label>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="mb-3">
+          <label for="eventOrganiser" class="form-label text-danger">Organiser Name*</label>
+          <input type="text" class="form-control" name="eventOrganiser" id="eventOrganiser"  placeholder="Orgniser Name" required>
+          <div class="valid-feedback">
+              Looks good!
+            </div>
+      </div>  
+        <div class="mb-3">
+            <label for="eventDescription" class="form-label text-danger"> Event Description*</label>
+            <textarea class="form-control" name="eventDescription" id="eventDescription" rows="3" placeholder="Description about event..." required></textarea>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+         
+        
+       <div>
+        <button type="submit" class="btn btn-info btn-sm w-100 my2">Create</button>
+       </div>
+ 
+     
+    </form>
+</div>
+
+
+<script>
+    (function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.form-validate')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+</script>
+<!-- ///////////////////////////////////////////////////////////////////////// -->
+</section>
